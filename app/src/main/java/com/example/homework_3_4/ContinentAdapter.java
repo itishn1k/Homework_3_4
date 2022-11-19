@@ -6,17 +6,18 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.homework_3_4.databinding.ItemContinentBinding;
 
 import java.util.ArrayList;
 
 public class ContinentAdapter extends RecyclerView.Adapter<ContinentViewHolder> {
 
-    public ContinentAdapter(ArrayList<String> continentList) {
+    public ContinentAdapter(ArrayList<Continent> continentList) {
         this.continentList = continentList;
     }
 
-    private final ArrayList<String> continentList;
+    private  ArrayList<Continent> continentList;
 
     @NonNull
     @Override
@@ -44,7 +45,8 @@ class ContinentViewHolder extends RecyclerView.ViewHolder {
         this.binding = binding;
     }
 
-    public void bind(String continent) {
-        binding.tvContinent.setText(continent);
+    public void bind(Continent continent) {
+        binding.tvContinent.setText(continent.getName());
+        Glide.with(binding.ivImageContinent).load(continent.getShape()).into(binding.ivImageContinent);
     }
 }
