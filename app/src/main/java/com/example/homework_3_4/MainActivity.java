@@ -8,15 +8,14 @@ import com.example.homework_3_4.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ActivityMainBinding binding;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
+
+        com.example.homework_3_4.databinding.ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().add(R.id.container, new FirstFragment()).commit();
+            getSupportFragmentManager().beginTransaction().add(R.id.container, new ContinentsFragment()).commit();
         }
     }
 }
