@@ -1,6 +1,8 @@
 package com.example.homework_3_4;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -13,11 +15,14 @@ import java.util.ArrayList;
 
 public class ContinentAdapter extends RecyclerView.Adapter<ContinentViewHolder> {
 
-    public ContinentAdapter(ArrayList<Continent> continentList) {
+    private ArrayList<Continent> continentList;
+
+    public ContinentAdapter(ArrayList<Continent> continentList, OnItemClick onItemClick) {
         this.continentList = continentList;
+        this.onItemClick = onItemClick;
     }
 
-    private  ArrayList<Continent> continentList;
+    private OnItemClick onItemClick;
 
     @NonNull
     @Override
@@ -26,8 +31,14 @@ public class ContinentAdapter extends RecyclerView.Adapter<ContinentViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ContinentViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ContinentViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.bind(continentList.get(position));
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onItemClick.onClick(position);
+            }
+        });
     }
 
     @Override

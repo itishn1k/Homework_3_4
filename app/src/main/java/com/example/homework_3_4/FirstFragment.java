@@ -16,7 +16,7 @@ import com.example.homework_3_4.databinding.FragmentFirstBinding;
 import java.util.ArrayList;
 
 
-public class FirstFragment extends Fragment {
+public class FirstFragment extends Fragment implements OnItemClick{
     private FragmentFirstBinding binding;
     private ArrayList<Continent> continentList = new ArrayList<>();
     private ContinentAdapter adapter;
@@ -31,7 +31,7 @@ public class FirstFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         loadData();
-        adapter = new ContinentAdapter(continentList);
+        adapter = new ContinentAdapter(continentList,this);
         binding.rvContinents.setAdapter(adapter);
     }
 
@@ -42,5 +42,11 @@ public class FirstFragment extends Fragment {
         continentList.add(new Continent("South America","https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/South_America_%28orthographic_projection%29.svg/1200px-South_America_%28orthographic_projection%29.svg.png"));
         continentList.add(new Continent("Australia","https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Australia_with_AAT_%28orthographic_projection%29.svg/900px-Australia_with_AAT_%28orthographic_projection%29.svg.png"));
         continentList.add(new Continent("Antarctica","https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Antarctica_%28orthographic_projection%29.svg/1024px-Antarctica_%28orthographic_projection%29.svg.png"));
+    }
+
+    @Override
+    public void onClick(int position) {
+        Continent continent = continentList.get(position);
+
     }
 }
