@@ -47,7 +47,7 @@ public class ContinentsFragment extends Fragment implements OnClickListener {
     @Override
     public void onClick(Continent continent) {
         Bundle bundle = new Bundle();
-        bundle.putString("country", continent.getCountryName());
+        bundle.putString("country", continent.getContinent());
         CountryFragment countryFragment = new CountryFragment();
         countryFragment.setArguments(bundle);
         requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, countryFragment).addToBackStack(null).commit();

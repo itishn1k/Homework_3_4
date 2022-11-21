@@ -5,12 +5,7 @@ import java.io.Serializable;
 public class Continent implements Serializable {
 
     String continent;
-    private String countryName;
-    private String shape;
-
-    public String getCountryName() {
-        return countryName;
-    }
+    private final String shape;
 
     public Continent(String continent, String shape) {
         this.continent = continent;
